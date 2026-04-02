@@ -53,7 +53,20 @@ Generate a full structural tree of any target page. This output trims unnecessar
 pagespec snapshot http://localhost:3000 --format json
 ```
 
-You can target specific visual sectors or cap the total tokenizer count using optional CLI flags. Run `pagespec snapshot --help` for all arguments.
+You can cap the total tokenizer count using optional CLI flags. Run `pagespec snapshot --help` for all arguments.
+
+**Component-Level Isolation**
+Extract a targeted UI component entirely isolated from its parent application using the `--focus <selector>` parameter. This natively clips the parsed Document Object Model exclusively to that element and its children.
+
+```bash
+pagespec snapshot http://localhost:3000 --focus "#my-interactive-button" --format json
+```
+
+Because Pagespec captures live browser styles, focusing a component automatically maps a fully reconstructed `isolatedHtml` snippet inside the output payload. You can strictly output this isolated extraction to disk to preview it natively using the export flag:
+
+```bash
+pagespec snapshot http://localhost:3000 --focus "#my-interactive-button" --out-html button-preview.html
+```
 
 **Calculating Diffs**
 Compare your live application against a stored JSON snapshot baseline. The diff engine utilizes graph logic to return exclusively the nodes that were modified, added, or removed.
