@@ -1,0 +1,442 @@
+{
+  "url": "file:///Users/sachit/Desktop/projects/pagespec/tests/fixtures/test.html",
+  "timestamp": "2026-04-02T00:54:18.080Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "tree": [
+    {
+      "id": "generic-interactivebut-root-0",
+      "role": "generic",
+      "label": "Interactive But Hidden\nHuge child\nchildbtn1 childbtn2\nClick Me",
+      "tag": "body",
+      "selector": "body",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 152
+      },
+      "visible": true,
+      "state": {
+        "focused": true,
+        "disabled": false
+      },
+      "styles": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "position": "static",
+        "zIndex": "auto",
+        "overflow": "visible",
+        "width": "1440px",
+        "height": "152px",
+        "color": "rgb(0, 0, 0)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "transform": "none",
+        "pointerEvents": "auto",
+        "clipPath": "none"
+      },
+      "children": [
+        {
+          "id": "button-interactivebut-root-0",
+          "role": "button",
+          "label": "Interactive But Hidden",
+          "tag": "button",
+          "selector": "#btn1",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "w": 147.15625,
+            "h": 21
+          },
+          "visible": false,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "inline-block",
+            "visibility": "visible",
+            "opacity": "0",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "147.156px",
+            "height": "21px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgb(239, 239, 239)",
+            "fontSize": "13.3333px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": []
+        },
+        {
+          "id": "link--root-0",
+          "role": "link",
+          "label": "",
+          "tag": "a",
+          "selector": "#link1",
+          "bounds": {
+            "x": 147.15625,
+            "y": 1,
+            "w": 0,
+            "h": 18
+          },
+          "visible": false,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "inline",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "auto",
+            "height": "auto",
+            "color": "rgb(0, 0, 238)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": []
+        },
+        {
+          "id": "region-zerosizeregio-root-0",
+          "role": "region",
+          "label": "zero size region",
+          "tag": "div",
+          "selector": "#zero",
+          "bounds": {
+            "x": 0,
+            "y": 21,
+            "w": 0,
+            "h": 10
+          },
+          "visible": false,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "0px",
+            "height": "10px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": []
+        },
+        {
+          "id": "generic-hugechild-root-1",
+          "role": "generic",
+          "label": "Huge child",
+          "tag": "div",
+          "selector": "#overflow",
+          "bounds": {
+            "x": 0,
+            "y": 31,
+            "w": 100,
+            "h": 100
+          },
+          "visible": true,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "hidden",
+            "width": "100px",
+            "height": "100px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": [
+            {
+              "id": "generic-hugechild-id-overflow-0",
+              "role": "generic",
+              "label": "Huge child",
+              "tag": "div",
+              "selector": "div",
+              "bounds": {
+                "x": 0,
+                "y": 31,
+                "w": 200,
+                "h": 200
+              },
+              "visible": true,
+              "state": {
+                "focused": false,
+                "disabled": false
+              },
+              "styles": {
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "position": "static",
+                "zIndex": "auto",
+                "overflow": "visible",
+                "width": "200px",
+                "height": "200px",
+                "color": "rgb(0, 0, 0)",
+                "backgroundColor": "rgba(0, 0, 0, 0)",
+                "fontSize": "16px",
+                "fontWeight": "400",
+                "transform": "none",
+                "pointerEvents": "auto",
+                "clipPath": "none"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "region-test-ancestor-root-0",
+          "role": "region",
+          "label": "test-ancestor",
+          "tag": "section",
+          "selector": "section",
+          "bounds": {
+            "x": 0,
+            "y": 131,
+            "w": 1440,
+            "h": 21
+          },
+          "visible": true,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "1440px",
+            "height": "21px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": [
+            {
+              "id": "button-childbtn1-aria-test-ances-0",
+              "role": "button",
+              "label": "childbtn1",
+              "tag": "button",
+              "selector": "#ok-btn",
+              "bounds": {
+                "x": 0,
+                "y": 131,
+                "w": 69.359375,
+                "h": 21
+              },
+              "visible": true,
+              "isObscured": false,
+              "events": [
+                "click",
+                "mouseenter"
+              ],
+              "state": {
+                "focused": false,
+                "disabled": false
+              },
+              "styles": {
+                "display": "inline-block",
+                "visibility": "visible",
+                "opacity": "1",
+                "position": "static",
+                "zIndex": "auto",
+                "overflow": "visible",
+                "width": "69.3594px",
+                "height": "21px",
+                "color": "rgb(0, 0, 0)",
+                "backgroundColor": "rgb(239, 239, 239)",
+                "fontSize": "13.3333px",
+                "fontWeight": "400",
+                "transform": "none",
+                "pointerEvents": "auto",
+                "clipPath": "none"
+              },
+              "children": []
+            },
+            {
+              "id": "button-childbtn2-aria-test-ances-1",
+              "role": "button",
+              "label": "childbtn2",
+              "tag": "button",
+              "selector": "button",
+              "bounds": {
+                "x": 73.8125,
+                "y": 131,
+                "w": 69.359375,
+                "h": 21
+              },
+              "visible": true,
+              "isObscured": false,
+              "state": {
+                "focused": false,
+                "disabled": false
+              },
+              "styles": {
+                "display": "inline-block",
+                "visibility": "visible",
+                "opacity": "1",
+                "position": "static",
+                "zIndex": "auto",
+                "overflow": "visible",
+                "width": "69.3594px",
+                "height": "21px",
+                "color": "rgb(0, 0, 0)",
+                "backgroundColor": "rgb(239, 239, 239)",
+                "fontSize": "13.3333px",
+                "fontWeight": "400",
+                "transform": "none",
+                "pointerEvents": "auto",
+                "clipPath": "none"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "generic-clickme-root-3",
+          "role": "generic",
+          "label": "Click Me",
+          "tag": "div",
+          "selector": "div",
+          "bounds": {
+            "x": 0,
+            "y": 152,
+            "w": 1440,
+            "h": 0
+          },
+          "visible": false,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "relative",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "1440px",
+            "height": "0px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": [],
+          "hiddenCount": 2
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalNodes": 12,
+    "visibleNodes": 6,
+    "hiddenNodes": 6,
+    "interactiveNodes": 4,
+    "warnings": [
+      {
+        "type": "hidden-interactive",
+        "selector": "#btn1",
+        "detail": "Element is interactive but not visually accessible."
+      },
+      {
+        "type": "missing-label",
+        "selector": "#link1",
+        "detail": "Element has role 'link' but no accessible name. It will be unreadable to screen readers and agents."
+      },
+      {
+        "type": "hidden-interactive",
+        "selector": "#link1",
+        "detail": "Element is interactive but not visually accessible."
+      },
+      {
+        "type": "zero-size",
+        "selector": "#link1",
+        "detail": "Element is in the accessibility tree but has zero dimensions."
+      },
+      {
+        "type": "zero-size",
+        "selector": "#zero",
+        "detail": "Element is in the accessibility tree but has zero dimensions."
+      },
+      {
+        "type": "overflow-clipped",
+        "selector": "#overflow",
+        "detail": "Element specifies overflow: hidden and has children exceeding its bounds."
+      }
+    ],
+    "console": [
+      {
+        "type": "error",
+        "text": "Test console error",
+        "location": "file:///Users/sachit/Desktop/projects/pagespec/tests/fixtures/test.html"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": "https://jsonplaceholder.typicode.com/todos/999999"
+      }
+    ],
+    "network": [
+      {
+        "url": "https://jsonplaceholder.typicode.com/todos/999999",
+        "method": "GET",
+        "status": 404
+      }
+    ]
+  },
+  "metadata": {
+    "truncated": false,
+    "actualDepth": 6,
+    "tokens": 1643
+  }
+}

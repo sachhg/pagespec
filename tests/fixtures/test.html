@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1" style="opacity: 0; pointer-events: auto;">Interactive Now Changed</button>
+    <a href="#" id="link1"></a>
+    <div id="zero" role="region" aria-label="zero size region" style="width: 0px; height: 10px;"></div>
+    <div id="overflow" style="overflow: hidden; width: 100px; height: 100px;">
+        <div style="width: 200px; height: 200px;">Huge child</div>
+    </div>
+
+    <section aria-label="test-ancestor">
+        <button id="ok-btn">childbtn1</button>
+        <button>childbtn2</button>
+    </section>
+
+    <!-- Occlusion Test -->
+    <div style="position: relative; width: 100px; height: 30px;">
+        <button id="obscured-btn" style="position: absolute; top:0; left: 0; width: 100px; height: 30px;">Click Me</button>
+        <div id="blocker" style="position: absolute; top:0; left: 0; width: 100px; height: 30px; background: red; z-index: 100;"></div>
+    </div>
+
+    <!-- Script for Events, Console, and Network -->
+    <script>
+        const btn = document.getElementById('ok-btn');
+        if (btn) {
+            btn.addEventListener('click', () => { console.log("clicked"); });
+            btn.addEventListener('mouseenter', () => {});
+        }
+
+        console.error("Test console error");
+
+        fetch('https://jsonplaceholder.typicode.com/todos/999999').catch(() => {});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "pagespec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.5.0",
+    "chokidar": "^5.0.0",
+    "commander": "^14.0.3",
+    "gpt-tokenizer": "^3.4.0",
+    "js-yaml": "^4.1.1",
+    "playwright": "^1.59.1",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  },
+  "type": "module",
+  "bin": {
+    "pagespec": "./dist/src/cli/index.js"
+  }
+}
