@@ -26,6 +26,9 @@
   },
   "type": "module",
   "bin": {
-    "pagespec": "./dist/src/cli/index.js"
-  }
+    "pagespec": "dist/src/cli/index.js"
+  },
+  "files": [
+    "dist/src"
+  ]
 }
