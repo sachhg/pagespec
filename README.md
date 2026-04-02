@@ -17,26 +17,27 @@ The tool captures several vital full stack metrics:
 
 The output is processed through a serialization engine to collapse empty formatting wrappers and produce an optimized JSON tree tailored to fit strictly within language model token limits.
 
-## Installation and Testing
-You can run the repository locally or link it for global system usage.
+## Installation
+Pagespec is published as an NPM package and is designed to be used globally locally or through npx.
 
-1. Install dependencies using your package manager.
+For global installation:
 ```bash
+npm install -g pagespec
+```
+
+Alternatively, you can run commands directly without a permanent installation:
+```bash
+npx pagespec --help
+```
+
+### Development and Testing
+If you would like to contribute and test the extraction logic locally:
+
+```bash
+git clone https://github.com/sachhg/pagespec.git
+cd pagespec
 npm install
-```
-
-2. Compile the typescript code.
-```bash
 npx tsc
-```
-
-3. Make the executable available globally.
-```bash
-npm link
-```
-
-To execute the test suite to verify the extraction and occlusion logic:
-```bash
 npx vitest run
 ```
 
