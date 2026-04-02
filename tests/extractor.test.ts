@@ -68,4 +68,32 @@ describe('Extraction Pipeline', () => {
         // Check summary counts
         expect(snap.summary.interactiveNodes).toBeGreaterThanOrEqual(5); 
     });
+
+    test('Isolated component extraction (--focus)', async () => {
+        const driver = new ExtractorDriver({ ...DEFAULT_CONFIG, viewport: "1000x1000" });
+        const serializer = new Serializer({ depth: 6, focus: true });
+
+        const url = `file://${path.resolve(__dirname, 'fixtures/test.html')}`;
+
+        await driver.start();
+        const raw = await driver.snapshot(url, { focus: "section[aria-label='test-ancestor']" });
+        await driver.stop();
+
+        const snap = serializer.process(url, raw.domTree, raw.viewport, raw.console, raw.network);
+
+        // Assertions
+        expect(snap.tree.length).toBe(1);
+        const root = snap.tree[0];
+        
+        // It heavily clipped the tree, the root is now exclusively the section
+        expect(root.tag).toBe('section');
+        expect(root.children.length).toBe(2);
+        expect(root.children[0].tag).toBe('button');
+        
+        // Ensure isolatedHtml was successfully built into the JSON
+        expect(snap.isolatedHtml).toBeDefined();
+        expect(snap.isolatedHtml).toContain('<section');
+        expect(snap.isolatedHtml).toContain('childbtn1</button>');
+        expect(snap.isolatedHtml).toContain('style="');
+    });
 });

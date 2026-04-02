@@ -1,0 +1,159 @@
+{
+  "url": "file:///Users/sachit/Desktop/projects/pagespec/tests/fixtures/test.html",
+  "timestamp": "2026-04-02T17:28:11.508Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "tree": [
+    {
+      "id": "region-test-ancestor-root-0",
+      "role": "region",
+      "label": "test-ancestor",
+      "tag": "section",
+      "selector": "section",
+      "bounds": {
+        "x": 0,
+        "y": 131,
+        "w": 1440,
+        "h": 21
+      },
+      "visible": true,
+      "state": {
+        "focused": false,
+        "disabled": false
+      },
+      "styles": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "position": "static",
+        "zIndex": "auto",
+        "overflow": "visible",
+        "width": "1440px",
+        "height": "21px",
+        "color": "rgb(0, 0, 0)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "transform": "none",
+        "pointerEvents": "auto",
+        "clipPath": "none"
+      },
+      "children": [
+        {
+          "id": "button-childbtn1-aria-test-ances-0",
+          "role": "button",
+          "label": "childbtn1",
+          "tag": "button",
+          "selector": "#ok-btn",
+          "bounds": {
+            "x": 0,
+            "y": 131,
+            "w": 69.359375,
+            "h": 21
+          },
+          "visible": true,
+          "isObscured": false,
+          "events": [
+            "click",
+            "mouseenter"
+          ],
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "inline-block",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "69.3594px",
+            "height": "21px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgb(239, 239, 239)",
+            "fontSize": "13.3333px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": []
+        },
+        {
+          "id": "button-childbtn2-aria-test-ances-1",
+          "role": "button",
+          "label": "childbtn2",
+          "tag": "button",
+          "selector": "button",
+          "bounds": {
+            "x": 73.8125,
+            "y": 131,
+            "w": 69.359375,
+            "h": 21
+          },
+          "visible": true,
+          "isObscured": false,
+          "state": {
+            "focused": false,
+            "disabled": false
+          },
+          "styles": {
+            "display": "inline-block",
+            "visibility": "visible",
+            "opacity": "1",
+            "position": "static",
+            "zIndex": "auto",
+            "overflow": "visible",
+            "width": "69.3594px",
+            "height": "21px",
+            "color": "rgb(0, 0, 0)",
+            "backgroundColor": "rgb(239, 239, 239)",
+            "fontSize": "13.3333px",
+            "fontWeight": "400",
+            "transform": "none",
+            "pointerEvents": "auto",
+            "clipPath": "none"
+          },
+          "children": []
+        }
+      ]
+    }
+  ],
+  "isolatedHtml": "<section style=\"display: block; visibility: visible; opacity: 1; position: static; z-index: auto; overflow: visible; width: 1440px; height: 21px; color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0); font-size: 16px; font-weight: 400; transform: none; pointer-events: auto; clip-path: none;\"><button id=\"button-childbtn1-aria-test-ances-0\" style=\"display: inline-block; visibility: visible; opacity: 1; position: static; z-index: auto; overflow: visible; width: 69.3594px; height: 21px; color: rgb(0, 0, 0); background-color: rgb(239, 239, 239); font-size: 13.3333px; font-weight: 400; transform: none; pointer-events: auto; clip-path: none;\">childbtn1</button><button id=\"button-childbtn2-aria-test-ances-1\" style=\"display: inline-block; visibility: visible; opacity: 1; position: static; z-index: auto; overflow: visible; width: 69.3594px; height: 21px; color: rgb(0, 0, 0); background-color: rgb(239, 239, 239); font-size: 13.3333px; font-weight: 400; transform: none; pointer-events: auto; clip-path: none;\">childbtn2</button></section>",
+  "summary": {
+    "totalNodes": 3,
+    "visibleNodes": 3,
+    "hiddenNodes": 0,
+    "interactiveNodes": 2,
+    "warnings": [],
+    "console": [
+      {
+        "type": "error",
+        "text": "Test console error",
+        "location": "file:///Users/sachit/Desktop/projects/pagespec/tests/fixtures/test.html"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": "https://jsonplaceholder.typicode.com/todos/999999"
+      }
+    ],
+    "network": [
+      {
+        "url": "https://jsonplaceholder.typicode.com/todos/999999",
+        "method": "GET",
+        "status": 404
+      }
+    ]
+  },
+  "metadata": {
+    "truncated": false,
+    "actualDepth": 6,
+    "tokens": 520
+  }
+}
+
+[Export] Saved isolated HTML preview to preview.html

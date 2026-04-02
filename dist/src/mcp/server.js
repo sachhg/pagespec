@@ -13,19 +13,20 @@ export async function startServer() {
     // Basic Cache
     const snapshotCache = new Map();
     const CACHE_TTL = 2000;
-    async function getSnapshot(url, depth = config.defaultDepth) {
+    async function getSnapshot(url, depth = config.defaultDepth, focusSelector) {
         const now = Date.now();
-        const cached = snapshotCache.get(url);
+        const cacheKey = `${url}::${focusSelector || ''}`;
+        const cached = snapshotCache.get(cacheKey);
         if (cached && (now - cached.time) < CACHE_TTL) {
             return cached.data;
         }
         const driver = new ExtractorDriver(config);
-        const serializer = new Serializer({ depth });
+        const serializer = new Serializer({ depth, focus: !!focusSelector });
         await driver.start();
         try {
-            const raw = await driver.snapshot(url, {});
+            const raw = await driver.snapshot(url, { focus: focusSelector });
             const snap = serializer.process(url, raw.domTree, raw.viewport, raw.console, raw.network);
-            snapshotCache.set(url, { time: Date.now(), data: snap });
+            snapshotCache.set(cacheKey, { time: Date.now(), data: snap });
             return snap;
         }
         finally {
@@ -38,12 +39,12 @@ export async function startServer() {
                 {
                     name: "snapshot",
                     description: "Get a structured representation of the running web app's rendered state",
-                    inputSchema: { type: "object", properties: { url: { type: "string" }, depth: { type: "number" } }, required: ["url"] },
+                    inputSchema: { type: "object", properties: { url: { type: "string" }, depth: { type: "number" }, focus: { type: "string" } }, required: ["url"] },
                 },
                 {
                     name: "diff",
                     description: "Get changes between a baseline and the current state",
-                    inputSchema: { type: "object", properties: { url: { type: "string" }, baseline: { type: "string" } }, required: ["url"] },
+                    inputSchema: { type: "object", properties: { url: { type: "string" }, baseline: { type: "string" }, focus: { type: "string" } }, required: ["url"] },
                 },
                 {
                     name: "warnings",
@@ -63,7 +64,8 @@ export async function startServer() {
             case "snapshot": {
                 const url = String(request.params.arguments?.url);
                 const depth = Number(request.params.arguments?.depth || config.defaultDepth);
-                const snap = await getSnapshot(url, depth);
+                const focus = request.params.arguments?.focus ? String(request.params.arguments?.focus) : undefined;
+                const snap = await getSnapshot(url, depth, focus);
                 return { content: [{ type: "text", text: JSON.stringify(snap, null, 2) }] };
             }
             case "warnings": {
@@ -83,12 +85,13 @@ export async function startServer() {
             case "diff": {
                 const url = String(request.params.arguments?.url);
                 const baselineName = String(request.params.arguments?.baseline || 'default');
+                const focus = request.params.arguments?.focus ? String(request.params.arguments?.focus) : undefined;
                 const baselinePath = path.join(process.cwd(), config.baselinesDir, `${baselineName}.json`);
                 if (!fs.existsSync(baselinePath)) {
                     throw new Error(`Baseline '${baselineName}' not found`);
                 }
                 const baselineData = JSON.parse(fs.readFileSync(baselinePath, 'utf-8'));
-                const snap = await getSnapshot(url);
+                const snap = await getSnapshot(url, config.defaultDepth, focus);
                 const engine = new DiffEngine();
                 const diffData = engine.diff(baselineData, snap);
                 return { content: [{ type: "text", text: JSON.stringify(diffData, null, 2) }] };

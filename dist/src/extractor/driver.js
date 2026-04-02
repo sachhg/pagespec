@@ -98,7 +98,8 @@ export class ExtractorDriver {
       (function() {
         const config = ${JSON.stringify({
                 styleFields: this.config.styleFields,
-                ignoredSelectors: this.config.ignoredSelectors
+                ignoredSelectors: this.config.ignoredSelectors,
+                focusSelector: options.focus
             })};
         ${extractDomTreeScript}
       })();

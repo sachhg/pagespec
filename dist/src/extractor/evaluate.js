@@ -162,7 +162,16 @@ function extractDomTree(config) {
   }
 
   const ignoredSelectorsJoined = ignoredSelectors.join(',');
-  return walk(document.body, ignoredSelectorsJoined);
+  
+  let rootElement = document.body;
+  if (config.focusSelector) {
+    const focused = document.querySelector(config.focusSelector);
+    if (focused) {
+      rootElement = focused;
+    }
+  }
+  
+  return walk(rootElement, ignoredSelectorsJoined);
 }
 return extractDomTree(config);
 `;

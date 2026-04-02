@@ -3,6 +3,7 @@ export interface PageSnapshot {
   timestamp: string;
   viewport: { width: number; height: number };
   tree: ComponentNode[];
+  isolatedHtml?: string;
   summary: SnapshotSummary;
   metadata?: {
     truncated: boolean;

@@ -22,14 +22,15 @@ program.command('snapshot <url>')
   .option('--state <state>', 'stable | hover | focus')
   .option('--visual', 'also write screenshot.png')
   .option('--tokens <count>', 'target max token count')
-  .option('--out <file>', 'output file path')
+  .option('--out <file>', 'output JSON/YAML file path')
+  .option('--out-html <file>', 'export isolated HTML preview directly to disk')
   .action(async (url, options) => {
     const config = loadConfig();
     const depth = options.depth ? parseInt(options.depth) : config.defaultDepth;
     const format = options.format || config.defaultFormat;
     
     const driver = new ExtractorDriver(config);
-    const serializer = new Serializer({ depth, tokens: options.tokens ? parseInt(options.tokens) : undefined });
+    const serializer = new Serializer({ depth, tokens: options.tokens ? parseInt(options.tokens) : undefined, focus: !!options.focus });
 
     try {
       await driver.start();
@@ -42,6 +43,13 @@ program.command('snapshot <url>')
       } else {
         console.log(outStr);
       }
+
+      if (options.outHtml && pageSnap.isolatedHtml) {
+        fs.writeFileSync(options.outHtml, pageSnap.isolatedHtml);
+        if (!options.out) {
+           console.log(`\n[Export] Saved isolated HTML preview to ${options.outHtml}`);
+        }
+      }
     } finally {
       await driver.stop();
     }
@@ -52,14 +60,15 @@ program.command('diff <url>')
   .option('--baseline <name>', 'name of the baseline to diff against', 'default')
   .option('--focus <selector>', 'CSS selector focusing the subtree')
   .option('--tokens <count>', 'target max token count')
-  .option('--out <file>', 'output file path')
+  .option('--out <file>', 'output JSON/YAML file path')
+  .option('--out-html <file>', 'export isolated HTML preview directly to disk')
   .action(async (url, options) => {
     const config = loadConfig();
     const depth = config.defaultDepth;
     const format = options.format || config.defaultFormat;
     
     const driver = new ExtractorDriver(config);
-    const serializer = new Serializer({ depth, tokens: options.tokens ? parseInt(options.tokens) : undefined });
+    const serializer = new Serializer({ depth, tokens: options.tokens ? parseInt(options.tokens) : undefined, focus: !!options.focus });
     const diffEngine = new DiffEngine();
 
     const baselinePath = path.join(process.cwd(), config.baselinesDir, `${options.baseline}.json`);
@@ -88,6 +97,13 @@ program.command('diff <url>')
         fs.writeFileSync(options.out, outStr);
       } else {
         console.log(outStr);
+      }
+
+      if (options.outHtml && afterSnap.isolatedHtml) {
+        fs.writeFileSync(options.outHtml, afterSnap.isolatedHtml);
+        if (!options.out) {
+           console.log(`\n[Export] Saved isolated HTML preview to ${options.outHtml}`);
+        }
       }
     } finally {
       await driver.stop();

@@ -2,7 +2,7 @@ import { encode } from 'gpt-tokenizer';
 import { ComponentNode, PageSnapshot, SnapshotSummary, SnapshotWarning } from '../types.js';
 
 export class Serializer {
-  constructor(private options: { depth: number, tokens?: number }) {}
+  constructor(private options: { depth: number, tokens?: number, focus?: boolean }) {}
 
   process(url: string, rawTree: any, viewport: { width: number, height: number }, consoleLogs: import('../types.js').ConsoleLog[] = [], networkRequests: import('../types.js').NetworkRequest[] = []): PageSnapshot {
     let tree = this.normalize(rawTree);
@@ -34,11 +34,17 @@ export class Serializer {
 
     const summary = this.computeSummary(finalTree, warnings, consoleLogs, networkRequests);
 
+    let isolatedHtml: string | undefined = undefined;
+    if (this.options.focus) {
+      isolatedHtml = this.generateIsolatedHtml(finalTree);
+    }
+
     return {
       url,
       timestamp: new Date().toISOString(),
       viewport,
       tree: [finalTree],
+      isolatedHtml,
       summary,
       metadata: {
         truncated: actualDepth < this.options.depth,
@@ -156,5 +162,39 @@ export class Serializer {
   private estimateTokens(tree: ComponentNode): number {
     const text = JSON.stringify(tree);
     return encode(text).length;
+  }
+
+  private generateIsolatedHtml(node: ComponentNode): string {
+    const tag = node.tag || 'div';
+    
+    let styleStr = '';
+    if (node.styles) {
+      styleStr = Object.entries(node.styles)
+        .filter(([_, value]) => value !== '' && value !== undefined)
+        .map(([key, value]) => {
+           const kebab = key.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+           return `${kebab}: ${value};`;
+        }).join(' ');
+    }
+    
+    const attrs = [];
+    if (node.id && !node.id.startsWith('generic-') && !node.id.startsWith('region-')) {
+       attrs.push(`id="${node.id}"`);
+    } else if (node.selector && node.selector.startsWith('#')) {
+       attrs.push(`id="${node.selector.slice(1)}"`);
+    }
+    
+    if (styleStr) attrs.push(`style="${styleStr}"`);
+    
+    const attrString = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
+    
+    let childrenHtml = '';
+    if (node.children && node.children.length > 0) {
+       childrenHtml = node.children.map(c => this.generateIsolatedHtml(c)).join('');
+    } else if (node.label) {
+       childrenHtml = node.label.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    return `<${tag}${attrString}>${childrenHtml}</${tag}>`;
   }
 }
